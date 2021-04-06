@@ -63,7 +63,7 @@ const copyToClipboard = () => {
 
 copyBtn.addEventListener('click', () => {
 	if(passOutLbl.innerHTML == '&nbsp;') {
-		passOutLbl.innerHTML = "Can't copy empty field";
+		passOutLbl.innerHTML = "Field is empty";
 		setTimeout(function() {
 			passOutLbl.innerHTML = '&nbsp;';
 		}, 1500)
