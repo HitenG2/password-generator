@@ -1,0 +1,76 @@
+.container{
+	padding-top: 13%;
+	padding-bottom: 1%;
+	text-align: center;
+}
+.generator{
+	font: bold 14pt sans-serif;
+}
+.generator__pass-result{
+	position: relative;
+	margin: 0 auto;
+	width: 30%;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+/* .generator__pass-label{
+	
+} */
+.generate-pass-btn{
+	line-height: 10px;
+	width: 10%;
+	height: 30px;
+	border: 3px solid purple;
+	border-top-left-radius: 20px;
+	border-top-right-radius: 20px;
+	border-bottom-left-radius: 20px;
+	border-bottom-right-radius: 20px;
+}
+.generate-pass-btn:hover{
+	filter: invert(100%);
+}
+.bi-files{
+	position: absolute;
+	right: 10%;
+}
+.bi-files:hover{
+	filter: contrast(30%);
+	filter: blur(20%);
+	color: purple;
+}
+
+@media (max-width: 368px) {
+	.generator__pass-result{
+		width: 90%;
+	}
+	.generate-pass-btn{
+		width: 40%;
+	}
+}
+
+@media (min-width: 368px) {
+	.generator__pass-result{
+		width: 60%;
+	}
+	.generate-pass-btn{
+		width: 30%;
+	}
+}
+
+@media (min-width: 992px) {
+	.generator__pass-result{
+		width: 35%;
+	}
+	.generate-pass-btn{
+		width: 15%;
+	}
+}
+	
+@media (min-width: 1200px) {
+	.generator__pass-result{
+		width: 30%;
+	}
+	.generate-pass-btn{
+		width: 10%;
+	}
+}
