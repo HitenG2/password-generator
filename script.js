@@ -62,13 +62,14 @@ const copyToClipboard = () => {
 }
 
 copyBtn.addEventListener('click', () => {
-	if(passOutLbl.innerHTML == '&nbsp;') {
+	if(passOutLbl.innerHTML == '&nbsp;' || passOutLbl.innerHTML == "Field is empty") {
 		passOutLbl.innerHTML = "Field is empty";
 		setTimeout(function() {
 			passOutLbl.innerHTML = '&nbsp;';
 		}, 1500)
 		return;
 	}
+	else if(passOutLbl.innerHTML == 'Скопирова<span style="color: red;">но</span>') return;
 	copyToClipboard();
 	ui_copyDone();
 });
