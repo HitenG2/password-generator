@@ -4,11 +4,11 @@ copyBtn = document.querySelector('.bi-files');
 
 const alphabetEnVowels = "yuoiea";
 const alphabetEnCons = "zxwvtsrqpnmlkjhgfdcb";
-let passLength = 12;
+let passMaxLength = 12;
 
 const rndNumberGen = () => {
 	let rndNumber = new Uint8Array(1);
-	while (rndNumber[0] > passLength || rndNumber[0] == 0 || rndNumber[0] < 8) {
+	while (rndNumber[0] > passMaxLength || rndNumber[0] == 0 || rndNumber[0] < 8) {
 		window.crypto.getRandomValues(rndNumber);
 	}
 	return rndNumber[0];
@@ -21,10 +21,10 @@ const fillHtml = pass => {
 const filterPass = pass => {
 	let repeatedWordsCount;
 	for (let i = 0; i < pass.length; ++i){
-		if (pass[i] == pass[i + 2] && i + 2 != passLength) {
+		if (pass[i] == pass[i + 2] && i + 2 != passMaxLength) {
 			repeatedWordsCount += 1;
 		}
-		if (pass[i] == 'y' && pass[i + 2] == 'y' && i + 2 != passLength) return false;
+		if (pass[i] == 'y' && pass[i + 2] == 'y' && i + 2 != passMaxLength) return false;
 	}
 	if (repeatedWordsCount >= 3) return false;
 	else return true;
@@ -75,6 +75,6 @@ copyBtn.addEventListener('click', () => {
 
 const ui_lengthChanged = () => {
 	passLengthUI = document.getElementById('pass-length-view');
-	passLength = document.getElementById('pass-length').value;
-	passLengthUI.innerHTML = passLength;
+	passMaxLength = document.getElementById('pass-length').value;
+	passLengthUI.innerHTML = passMaxLength;
 }
