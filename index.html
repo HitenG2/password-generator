@@ -17,10 +17,23 @@
 				<label class="generator__pass-label" id="pass-out-lbl">&nbsp;</label>
 				<i class="bi bi-files"></i>
 			</div>
-			<div class="pass-length">
-				<span>max-length:</span>
-				<label id="pass-length-view">12</label><br>
-				<input type="range" name="pass-length" min="8" max="16" id="pass-length" oninput="ui_lengthChanged()">
+			<div class="generator__options">
+				<span>length:</span>
+				<label id="pass-length-view">12</label>
+				<input type="range" name="pass-length" min="6" max="24" step="2" id="pass-length" oninput="ui_lengthChanged()">
+				<div class="generator__diff-case block-offset">
+					<input type="checkbox" class="diff-case-checkbox upscale">
+					<label>diff case</label><br>
+					<input type="checkbox" id="rnd-nums-checkbox" class="upscale">
+					<label>rnd num</label><br>
+					<div class="generator__choose-rnd-nums">
+						<input type="radio" checked="checked" name="option" class="generator__choose-years upscale">
+						<label>years</label><br>
+						<input type="radio" name="option" class="generator__choose-random upscale">
+						<label>rand&nbsp;</label>
+					</div>
+
+				</div>
 			</div>
 			
 			<button class="generate-pass-btn" id="generate-pass-btn">Generate</button>
