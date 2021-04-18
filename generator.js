@@ -4,56 +4,49 @@ class Generator {
 	}
 
 	password = () => {
-		const alphabetEnVowels = "yuoiea";
+		const alphabetEnVowels = "uoiea";
 		const alphabetEnCons = "zxwvtsrqpnmlkjhgfdcb";
 		let pass = "";
+		let check = false;
 		for (let i = 0; pass.length != passLengthSelected; ++i){
 			if(diffCaseCheckbox.checked == true && i == 0){
-				pass += alphabetEnCons[this.rndNumberGen(alphabetEnCons.length)].toUpperCase() + alphabetEnVowels[this.rndNumberGen(alphabetEnVowels.length)];
+				pass += alphabetEnCons[this.rndNumberGen(alphabetEnCons.length)].toUpperCase();
+				check = true;
 				continue;
 			}
 			if(rndNumsCheckbox.checked == true){
-				if (rndYearsRadio.checked == true && pass.length + 4 == passLengthSelected){
+				if(rndYearsRadio.checked == true && pass.length + 4 == passLengthSelected){
 					pass += this.rndNumberGen(2022, 1901);
 					break;
 				}
-				else if(rndNumsRadio.checked == true){
-					let amountToEnd;
-					for(;;){
-						amountToEnd = this.rndNumberGen(7,1);
-						if (amountToEnd % 2 == 0) {break};
-					}
-					if (passLengthSelected - pass.length == 2) { amountToEnd = 2; }
-					if (pass.length + amountToEnd == passLengthSelected) {
-						let temp = amountToEnd;
-						let rank = 1;
-						for (let i = 0; i < temp - 1; ++i){
-							amountToEnd *= 10;
-							rank *= 10;
-						}
-						if (amountToEnd <= 65535) { pass +=  this.rndNumberGen(amountToEnd, rank);}
-						else {
-							let tempPass = rank;
-							while(tempPass <= rank) { tempPass = Math.floor(Math.random() * amountToEnd); }
-							pass += tempPass;
-						}
-						break;
-					}			
+				else if(rndNumsRadio.checked == true && pass.length + this.rndNumberGen(6) == passLengthSelected){
+					let currRndGenMin = Math.pow(10, passLengthSelected - pass.length - 1);
+					let currRndGenMax = currRndGenMin * 10 - 1;
+					pass += this.rndNumberGen(currRndGenMax, currRndGenMin);
+					break;
+				}
+				else if(rndNumsRadio.checked == true && pass.length + 2 == passLengthSelected){
+					pass += this.rndNumberGen(99, 10);
+					break;
 				}
 			}
-			pass += alphabetEnCons[this.rndNumberGen(alphabetEnCons.length)] + alphabetEnVowels[this.rndNumberGen(alphabetEnVowels.length)];
+			if(check) {
+				pass += alphabetEnVowels[this.rndNumberGen(alphabetEnVowels.length)]
+				check = false;
+			}
+			else {
+				pass += alphabetEnCons[this.rndNumberGen(alphabetEnCons.length)]
+				check = true;
+			}
 		}
-		if (this.filterPass(pass)) {
-			return pass;
-		}
-		else {
-			return this.password();
-		} 
+		if (this.filterPass(pass)) return pass;
+		else return this.password();
 	}
 
 	rndNumberGen = (maxLength, minLength = -1) => {
 		let rndNumber;
 		if (maxLength > 255) { rndNumber = new Uint16Array(1); }
+		else if (maxLength > 65535) { rndNumber = new Uint32Array(1); }
 		else { rndNumber = new Uint8Array(1); }
 		rndNumber[0] = maxLength;
 		if (minLength == -1){

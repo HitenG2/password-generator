@@ -55,10 +55,6 @@ const ui_lengthChanged = () => {
 const ui_lengthChangedManual = () => {
 	passLengthUI = document.getElementById('pass-length-view');
 	if (passLengthUI.value == "") passLengthUI.value = passLengthSelected;
-	if (passLengthUI.value % 2 != 0) {
-		let temp = parseInt(passLengthUI.value);
-		passLengthUI.value = temp + 1;
-	}
 	if (passLengthUI.value < 6) passLengthUI.value = 6;
 	if (passLengthUI.value > 24) passLengthUI.value = 24;
 	passLengthSelected = passLengthUI.value;

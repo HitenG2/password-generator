@@ -20,8 +20,8 @@
 			</div>
 			<div class="generator__options">
 			  <span>length:</span>
-				<input type="number" value="16" id="pass-length-view" class="generator__pass-length-view" onchange="ui_lengthChangedManual()">
-				<input type="range" name="pass-length" min="6" max="24" step="2" id="pass-length" oninput="ui_lengthChanged()">
+				<input type="number" value="15" id="pass-length-view" class="generator__pass-length-view block-offset" onchange="ui_lengthChangedManual()">
+				<input type="range" name="pass-length" min="6" max="24" id="pass-length" class="generator__pass-length-range" oninput="ui_lengthChanged()">
 				<div class="generator__diff-case block-offset">
 					<input type="checkbox" id="chkDiff" class="diff-case-checkbox upscale" onchange="applyChanges()">
 					<label for="chkDiff">diff case</label><br>
