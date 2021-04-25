@@ -18,7 +18,7 @@ class Generator
 				pass += alphabetEnVowels[rand(alphabetEnVowels.length)]
 				check = false
 			else
-				choise = rand(1)
+				choise = rand(2)
 				if choise == 1 && pass.length + 1 != passLengthSelected
 					pass += alphabetEnCons[rand(alphabetEnCons.length)]
 				elsif choise == 0 && !(pass.length + 1 >= passLengthSelected.to_i)
@@ -32,7 +32,7 @@ class Generator
 		end
 		if numbers == true
 			for i in pass.length - 3..pass.length
-				pass[i] = rand(9).to_s
+				pass[i] = rand(10).to_s
 			end
 		end
 		return pass
